@@ -207,7 +207,7 @@ class StationsTest < Minitest::Test
     Constants::HOMONYM_STATIONS.each do |homonym_id|
       homonym_station = STATIONS_BY_ID[homonym_id]
       Constants::SUGGESTABLE_LOCALES.each do |locale|
-        assert !homonym_station["info:#{locale}"].nil?,
+        assert (!homonym_station["info:#{locale}"].nil? || homonym_station["country_hint"] == 't')
           "Homonym station #{homonym_station["name"]} (#{homonym_station["id"]}) must have an info in “#{locale}”"
       end
     end
